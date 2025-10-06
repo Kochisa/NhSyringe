@@ -9,4 +9,4 @@ NHENTAI注射器，将中文翻译注入到 N 站体内。
 ## 安装
 
 1. [安装一个用户脚本管理器](https://sleazyfork.org/help/installing-user-scripts)
-2. 前往 [Sleazy Fork](https://sleazyfork.org/scripts/407833) 安装最新版本
+2. 前往 [Sleazy Fork](https://sleazyfork.org/zh-CN/scripts/551797) 安装最新版本
