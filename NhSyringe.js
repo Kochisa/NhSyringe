@@ -3,7 +3,7 @@
 // @namespace    https://github.com/Kochisa/NhSyringe
 // @version      1.0
 // @description  汉化 NHentai 网站内容
-// @author       Your Name
+// @author       Kochisa
 // @license      MIT
 // @match        https://nhentai.net/*
 // @match        https://*.nhentai.net/*
