@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NHentai 汉化插件
 // @namespace    https://github.com/Kochisa/NhSyringe
-// @version      1.0
+// @version      1.1
 // @description  汉化 NHentai 网站内容
 // @author       Kochisa
 // @license      MIT
@@ -156,12 +156,29 @@
         ]}
     ];
  
-    // 页面加载后执行
-    window.addEventListener('load', async () => {
+    // 汉化主流程
+    async function runTranslate() {
         translateText();
         translateTimeUnitsNode(document.body);
         for (const cfg of tagConfigs) {
             await translateTagField(cfg.field, cfg.urls);
         }
+    }
+
+    // 页面加载后执行一次
+    window.addEventListener('load', runTranslate);
+
+    // 监听 DOM 变化，自动汉化
+    const observer = new MutationObserver(() => {
+        runTranslate();
     });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // 可选：防止多次重复执行（如需优化性能可加防抖）
+    // let timer;
+    // const observer = new MutationObserver(() => {
+    //     clearTimeout(timer);
+    //     timer = setTimeout(runTranslate, 200);
+    // });
+    // observer.observe(document.body, { childList: true, subtree: true });
 })();
