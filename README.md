@@ -1,13 +1,4 @@
-# EhSyringe
-
-[![Build Status](https://github.com/EhTagTranslation/EhSyringe/workflows/ci/badge.svg)](../../actions)
-
-[![GitHub All Releases](https://img.shields.io/github/downloads/EhTagTranslation/EhSyringe/total)](../../releases)
-[![GitHub Releases (by Asset)](https://img.shields.io/github/downloads/EhTagTranslation/EhSyringe/latest/ehsyringe.chrome.zip)](../../releases/latest/download/ehsyringe.chrome.zip)
-[![GitHub Releases (by Asset)](https://img.shields.io/github/downloads/EhTagTranslation/EhSyringe/latest/ehsyringe.firefox.xpi)](../../releases/latest/download/ehsyringe.firefox.xpi)
-[![GitHub Releases (by Asset)](https://img.shields.io/github/downloads/EhTagTranslation/EhSyringe/latest/ehsyringe.user.js)](../../releases/latest/download/ehsyringe.user.js)
-
-E 站注射器，将中文翻译注入到 E 站体内。
+NHENTAI注射器，将中文翻译注入到 N 站体内。
 
 这一针打下去你就会说中文了。
 
