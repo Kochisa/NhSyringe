@@ -1,8 +1,8 @@
 NHENTAI注射器，将中文翻译注入到 N 站体内。
 
-参考[EhSyringe](https://github.com/EhTagTranslation/EhSyringe)并使用EhSyringe词库制作的NHENTAI翻译脚本。
+使用EhSyringe词库制作的NHENTAI翻译脚本。
 
-这一针打下去你就会说中文了。
+这虚空一针打下去你就会说中文了。
 
 ![Syringe](https://user-images.githubusercontent.com/5716100/62419351-be9d7400-b6b0-11e9-86d3-680436973176.png)
 
