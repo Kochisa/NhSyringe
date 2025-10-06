@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NHentai 汉化插件
 // @namespace    https://github.com/Kochisa/NhSyringe
-// @version      1.1
+// @version      1.0
 // @description  汉化 NHentai 网站内容
 // @author       Kochisa
 // @license      MIT
@@ -12,8 +12,7 @@
  
 (function() {
     'use strict';
- 
-    // 汉化映射表
+
     const translations = {
         "Title": "标题",
         "Artists": "艺术家",
@@ -53,8 +52,7 @@
         "New Uploads": "最新上传",
         "Popular Now": "当前热门"
     };
- 
-    // 通用词库加载
+
     async function loadDict(url) {
         const res = await fetch(url);
         const text = await res.text();
@@ -69,10 +67,8 @@
         }
         return dict;
     }
- 
-    // 通用标签翻译
+
     async function translateTagField(field, urls) {
-        // 支持多个词库合并
         let dict = {};
         for (const url of urls) {
             const d = await loadDict(url);
@@ -89,8 +85,7 @@
             }
         });
     }
- 
-    // 替换页面中的文本
+
     function translateTextNode(node) {
         if (node.nodeType === Node.TEXT_NODE) {
             let text = node.nodeValue;
@@ -106,8 +101,7 @@
     function translateText() {
         translateTextNode(document.body);
     }
- 
-    // 替换英文时间单位为中文
+
     function translateTimeUnitsNode(node) {
         if (node.nodeType === Node.TEXT_NODE) {
             let text = node.nodeValue;
@@ -125,8 +119,7 @@
             node.childNodes.forEach(translateTimeUnitsNode);
         }
     }
- 
-    // 配置所有需要汉化的字段及其词库
+
     const tagConfigs = [
         { field: '标签', urls: [
             'https://raw.githubusercontent.com/EhTagTranslation/Database/refs/heads/master/database/female.md',
@@ -155,8 +148,7 @@
             'https://raw.githubusercontent.com/EhTagTranslation/Database/refs/heads/master/database/character.md'
         ]}
     ];
- 
-    // 汉化主流程
+
     async function runTranslate() {
         translateText();
         translateTimeUnitsNode(document.body);
@@ -165,20 +157,10 @@
         }
     }
 
-    // 页面加载后执行一次
     window.addEventListener('load', runTranslate);
 
-    // 监听 DOM 变化，自动汉化
     const observer = new MutationObserver(() => {
         runTranslate();
     });
     observer.observe(document.body, { childList: true, subtree: true });
-
-    // 可选：防止多次重复执行（如需优化性能可加防抖）
-    // let timer;
-    // const observer = new MutationObserver(() => {
-    //     clearTimeout(timer);
-    //     timer = setTimeout(runTranslate, 200);
-    // });
-    // observer.observe(document.body, { childList: true, subtree: true });
 })();
