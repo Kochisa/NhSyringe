@@ -1,16 +1,18 @@
 // ==UserScript==
 // @name         NHentai 汉化插件
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/Kochisa/NhSyringe
 // @version      1.0
 // @description  汉化 NHentai 网站内容
 // @author       Your Name
+// @license      MIT
 // @match        https://nhentai.net/*
+// @match        https://*.nhentai.net/*
 // @grant        none
 // ==/UserScript==
-
+ 
 (function() {
     'use strict';
-
+ 
     // 汉化映射表
     const translations = {
         "Title": "标题",
@@ -51,7 +53,7 @@
         "New Uploads": "最新上传",
         "Popular Now": "当前热门"
     };
-
+ 
     // 通用词库加载
     async function loadDict(url) {
         const res = await fetch(url);
@@ -67,7 +69,7 @@
         }
         return dict;
     }
-
+ 
     // 通用标签翻译
     async function translateTagField(field, urls) {
         // 支持多个词库合并
@@ -87,7 +89,7 @@
             }
         });
     }
-
+ 
     // 替换页面中的文本
     function translateTextNode(node) {
         if (node.nodeType === Node.TEXT_NODE) {
@@ -104,7 +106,7 @@
     function translateText() {
         translateTextNode(document.body);
     }
-
+ 
     // 替换英文时间单位为中文
     function translateTimeUnitsNode(node) {
         if (node.nodeType === Node.TEXT_NODE) {
@@ -123,7 +125,7 @@
             node.childNodes.forEach(translateTimeUnitsNode);
         }
     }
-
+ 
     // 配置所有需要汉化的字段及其词库
     const tagConfigs = [
         { field: '标签', urls: [
@@ -153,7 +155,7 @@
             'https://raw.githubusercontent.com/EhTagTranslation/Database/refs/heads/master/database/character.md'
         ]}
     ];
-
+ 
     // 页面加载后执行
     window.addEventListener('load', async () => {
         translateText();
